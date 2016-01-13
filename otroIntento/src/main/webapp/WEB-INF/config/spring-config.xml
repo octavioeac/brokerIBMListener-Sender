@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:amq="http://activemq.apache.org/schema/core"
+   xmlns:jms="http://www.springframework.org/schema/jms"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                       http://www.springframework.org/schema/beans/spring-beans.xsd
+                       http://www.springframework.org/schema/context
+                       http://www.springframework.org/schema/context/spring-context.xsd
+                       http://www.springframework.org/schema/jms
+                       http://www.springframework.org/schema/jms/spring-jms.xsd
+                        ">
+
+
+<context:component-scan base-package="com" />
+
+   
+    <bean id="mqClientConnectionFactory" class="com.ibm.mq.jms.MQConnectionFactory">
+               <property name="hostName" value="10.94.233.162"/>
+               <property name="queueManager" value="MB8QMGR"/>
+               <property name="port" value="2414"/>
+               <property name="channel" value="SYSTEM.BKR.CONFIG"/>
+               <property name="transportType" value="0"/>
+         
+    </bean>
+    
+
+    
+<bean id="destinationResolver" 
+class="org.springframework.jms.support.destination.DynamicDestinationResolver"/>
+
+
+<bean id="jmsQueueConnectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+<property name="targetConnectionFactory" ref="mqClientConnectionFactory"/>
+<property name="reconnectOnException" value="true"/>
+</bean>
+
+
+<bean id="jmsQueueConnectionFactorySecured" class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter">
+<property name="targetConnectionFactory" ref="mqClientConnectionFactory"/>
+<property name="username" value="mqm"/>
+<property name="password" value="mqm"/>
+</bean>
+
+
+<bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+<property name="targetConnectionFactory" ref="mqClientConnectionFactory"/>
+<property name="cacheConsumers" value="true"/>
+<property name="sessionCacheSize" value="5"/>
+</bean>
+
+
+<bean id="JmsTemplate" class=" org.springframework.jms.core.JmsTemplate">
+<property name="connectionFactory" ref="mqClientConnectionFactory"/>
+<property name="destinationResolver" ref="DynamicDestinationResolver"/>
+<property name="receiveTimeout" value="10000"/>
+</bean>
+
+<bean id="DynamicDestinationResolver"  class="org.springframework.jms.support.destination.DynamicDestinationResolver"></bean>
+
+<bean id="onMesagge" class="com.frida.listener.SpringMdp"></bean>
+
+
+
+    <bean id="listenerContainer"  class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+            <property name="connectionFactory" ref="mqClientConnectionFactory" />
+            <property name="destination" ref="queue" />
+            <property name="messageListener" ref="onMesagge" />
+            <property name="autoStartup" value="false"/>
+    </bean>
+
+
+ <bean id="queue" class="com.ibm.mq.jms.MQQueue" depends-on="mqClientConnectionFactory">
+                <property name="baseQueueManagerName" value="MB8QMGR" />
+                <property name="baseQueueName" value="QL.FRIDA.OUT" />
+                <property name="targetClient" value="1" />
+        </bean>
+        
+        
+</beans>
+
+

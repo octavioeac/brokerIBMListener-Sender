@@ -1,0 +1,6 @@
+com\frida\dao\HibernateUtil.class
+www\frida\modelo\SaibConsultaRequest.class
+www\frida\modelo\StoreProcedureSAIB.class
+www\frida\modelo\SaibConsultaResponse.class
+com\frida\listener\SpringMdp.class
+com\frida\dao\Snippet.class

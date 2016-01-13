@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:amq="http://activemq.apache.org/schema/core"
+   xmlns:jms="http://www.springframework.org/schema/jms"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                       http://www.springframework.org/schema/beans/spring-beans.xsd
+                       http://www.springframework.org/schema/context
+                       http://www.springframework.org/schema/context/spring-context.xsd
+                       http://www.springframework.org/schema/jms
+                       http://www.springframework.org/schema/jms/spring-jms.xsd
+                        ">
+
+
+<context:component-scan base-package="com" />
+
+<bean id="transactionManager"
+    class="org.springframework.jms.connection.JmsTransactionManager">
+    <property name="connectionFactory" ref="jmsConnectionFactory" />
+</bean>
+
+<!-- 
+<bean id="mqMessageListener" class="ru.mos.notification.controller.MQNotificationListener">
+    <property name="mqwsUrl" value="${mqws.url}" />
+    <property name="mqwsSoapAction" value="${mqws.soapAction}" />
+    <property name="mqwsSoapStart" value="${mqws.soapStart}" />
+    <property name="mqwsSoapEnd" value="${mqws.soapEnd}" />
+</bean>
+ -->
+<bean id="mqMessageListener" class="com.frida.listener.SpringMdp">
+<property name="connectionFactory" ref="jmsConnectionFactory"> </property>
+    <property name="destinationName" value="QL.FRIDA.OUT" />
+    
+</bean>
+
+<bean id="mqQueueConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+    <property name="hostName" value="10.94.233.162" />
+    <property name="port" value="2414" />
+    <property name="queueManager" value="MB8QMGR" />
+    <property name="transportType" value="1" />
+    <property name="channel" value="SYSTEM.BKR.CONFIG" />
+    
+</bean>
+
+<bean id="jmsConnectionFactory"
+    class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter">
+    <property name="targetConnectionFactory" ref="mqQueueConnectionFactory" />
+    <property name="username" value="mqm" />
+    <property name="password" value="mqm" />
+</bean>
+
+<bean
+    class="org.springframework.jms.listener.DefaultMessageListenerContainer">       
+  <!-- <property name="destinationName" value="QL.FRIDA.OUT" />  -->
+   <property name="destinationName" value="QL.EVFRIDA"/> 
+    <property name="destinationResolver">
+        <bean
+            class="org.springframework.jms.support.destination.DynamicDestinationResolver" />
+    </property>
+    <property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE" />
+    <property name="sessionTransacted" value="true" />
+    <property name="messageListener" ref="mqMessageListener" />
+    <property name="transactionManager" ref="transactionManager"/>
+    <property name="connectionFactory" ref="jmsConnectionFactory" />
+    <property name="maxConcurrentConsumers" value="50"/>
+     <property name="concurrentConsumers" value="10"/>
+     <property name="receiveTimeout" value="5000"/>
+    </bean>        
+
+</beans>
+
+
