@@ -52,8 +52,8 @@
 
 <bean
     class="org.springframework.jms.listener.DefaultMessageListenerContainer">       
-   <property name="destinationName" value="QL.ARM.IN" />  
-   <!--<property name="destinationName" value="QL.EVFRIDA"/>--> 
+   <!--<property name="destinationName" value="QL.ARM.IN" />  -->
+   <property name="destinationName" value="QL.EVFRIDA"/> 
     <property name="destinationResolver">
         <bean
             class="org.springframework.jms.support.destination.DynamicDestinationResolver" />
