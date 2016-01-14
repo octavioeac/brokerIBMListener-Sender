@@ -91,7 +91,7 @@ public class BrokerRestController {
 		singletonQueue j=new singletonQueue();
 		j.mandarMensaje(cadena);
 		
-		k.setNombre("HOLA");
+		k.setNombre("HOLA MUNDO");
 		k.setRef_sisa("RFC-787-HJUI");
 		return k;
 		
