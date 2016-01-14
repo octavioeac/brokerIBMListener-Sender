@@ -2,20 +2,309 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.frida.broker</groupId>
-  <artifactId>jspTutorial</artifactId>
+  <artifactId>escuchadorARMFrida</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>jspTutorial Maven Webapp</name>
   <url>http://maven.apache.org</url>
+    <properties>
+  	      <log4j.version>1.2.16</log4j.version>
+  	     <spring-version>3.2.2.RELEASE</spring-version>
+  	     <spring.jms-version>3.1.1.RELEASE</spring.jms-version>
+    	 <spring-mvc-version>3.0.4.RELEASE</spring-mvc-version>
+     </properties>
+     
+  
   <dependencies>
+  <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.1.1</version>
+</dependency>
+  
+		
+
+<!-- Spring Framework - Core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-version}</version>
+			</dependency>
+	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>3.0.5.RELEASE</version>
+	</dependency>	
+		
+		
+		 
+  <dependency>
+  
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-jms</artifactId>
+     <version>3.1.0.RELEASE</version>
+     <scope>compile</scope>
+  </dependency>
+	
+	
+		
+	<dependency>
+	<groupId>javax.jms</groupId>
+	<artifactId>jms</artifactId>
+	<version>1.1</version>
+</dependency>
+		
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		
+		<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-jca</artifactId>
+	<version>2.0.8</version>
+</dependency>
+      
+    
+      
+      <!-- Dependencias de IBM BROKER -->
+      
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.commonservices</artifactId>
+	<version>7.1.0.3 </version>
     </dependency>
+
+      
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.connector</artifactId>
+	<version>7.1.0.3 </version>
+    </dependency>  
+      
+           
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.headers</artifactId>
+	<version>7.1.0.3 </version>
+    </dependency>  
+     
+     
+             
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq</artifactId>
+	<version>7.1.0.3 </version>
+     </dependency>  
+       
+                
+               
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.jmqi</artifactId>
+	<version>7.1.0.3 </version>
+     </dependency>  
+       
+          
+             
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.jmqi.local</artifactId>
+	<version>7.1.0.3 </version>
+     </dependency>  
+     
+                
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.jmqi.remote</artifactId>
+	<version>7.1.0.3 </version>
+     </dependency>  
+       
+       
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.jmqi.system</artifactId>
+	<version>7.1.0.3 </version>
+     </dependency>  
+         
+        
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.jms.admin</artifactId>
+	<version>7.1.0.3 </version>
+     </dependency>  
+     
+     
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mq.pcf</artifactId>
+	<version>7.1.0.3</version>
+     </dependency>  
+        
+                        
+         
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.mqjms</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+     
+     
+     
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.commonservices</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.commonservices.j2se</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+     
+    <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.jms.internal</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+     
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.jms</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+     
+     
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.matchspace</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+     
+     
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.provider</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+       
+      
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.ref</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+       <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.wmq.common</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+      
+      
+       <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.wmq.factories</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+     
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.wmq</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+  
+  
+      
+   
+      
+      
+      
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>com.ibm.msg.client.wmq.v6</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+        
+      
+      <dependency>
+	<groupId>com.ibm</groupId>
+	<artifactId>dhbcore</artifactId>
+	<version>7.1.0.3</version>
+     </dependency> 
+      
+   <!-- BROKER FIN -->
+      
+  <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+         <!-- <version>4.3.5.Final</version>  -->
+         <version>5.0.5.Final</version>        
+    </dependency>
+    
+    
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+        
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.0.5</version>
+        </dependency>
+  
+			<!-- HIBERNATE -->
+        <dependency>
+  		<groupId>javax.transaction</groupId>
+  		<artifactId>jta</artifactId>
+  		<version>1.1</version>
+  	  </dependency>
+
+			<dependency>
+	<groupId>com.sun.xml.bind</groupId>
+	<artifactId>jaxb-impl</artifactId>
+	<version> 2.2.10</version>
+</dependency>
+			<dependency>
+	<groupId>com.sun.xml.bind</groupId>
+	<artifactId>jaxb-core</artifactId>
+	<version>2.2.11</version>
+</dependency>
+  
+  
+  <dependency>
+	<groupId>javax.resource</groupId>
+	<artifactId>connector-api</artifactId>
+	<version>1.6-alpha-1</version>
+</dependency>
+  
+  
   </dependencies>
   <build>
-    <finalName>jspTutorial</finalName>
+    <finalName>escuchadorARMFrida</finalName>
   </build>
 </project>
