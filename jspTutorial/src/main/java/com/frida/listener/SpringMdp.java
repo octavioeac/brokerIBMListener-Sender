@@ -12,9 +12,8 @@ import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 import java.util.logging.*;
 
-
-
-
+import com.frida.analizaxml.pruebaXML;
+import com.frida.analizaxml.xmlAnalytic;
 import com.sun.nio.sctp.Notification;
 
 import www.frida.modelo.Snippet;
@@ -30,14 +29,9 @@ public class SpringMdp extends DefaultMessageListenerContainer implements Messag
 				 msg=(TextMessage)message;
 				 String text = msg.getText();
 					System.out.println(text);
-	            //logger.info("HOLA MENSAJE");
-				 logger.info(message.toString());
-				 logger.info("HOLA MENSAJE 2");  
-           System.out.println("HOLA MUNDO MDB");
-           Snippet julio=new Snippet();
-   		julio.pruebaStore();
-           //System.out.println(message.getJMSDeliveryMode());
-           //System.out.println(message.toString());
+	          	 logger.info(message.toString());
+				xmlAnalytic k=new xmlAnalytic(text);
+					k.detonaProceso();
            System.out.println(message);
 	        }
 	     catch(JMSException e){
