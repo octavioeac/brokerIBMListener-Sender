@@ -18,10 +18,12 @@ import com.frida.controller.pojo.GeneralData;
 import com.frida.controller.pojo.Objetito;
 import com.frida.singleton.sender.singletonQueue;
 
+import www.frida.modelo.Snippet;
+
 
 
 @RestController
-public class WdmRestController {
+public class BrokerRestController {
 	
 	
 
@@ -29,6 +31,7 @@ public class WdmRestController {
 	@RequestMapping(value = "/nodes/{supplier}/{wdm}", 
 			method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getNodos(@PathVariable("supplier") String supplier,@PathVariable("wdm") String wdm){
+		
 		
 		return "HOLA MUNDO";
 		
@@ -47,9 +50,9 @@ public class WdmRestController {
 		System.out.println(gral.getNombre()+gral.getNombre());
 		Objetito k=new Objetito();
 		String cadena="<PeEquipo>"
-				+ "<ID_Nodo>Prueba Frida para1</ID_Nodo>"
-				+ "<ID_Nodo_Nuevo>Prueba Frida para2</ID_Nodo_Nuevo>"
-				+ "<Movimiento>Prueba Frida para3</Movimiento>"
+				+ "<ID_Nodo>"+gral.getEquipo()+"</ID_Nodo>"
+				+ "<ID_Nodo_Nuevo>"+gral.getNombre()+"</ID_Nodo_Nuevo>"
+				+ "<Movimiento>"+gral.getNumero()+"</Movimiento>"
 				+ "<CLLIEdificio>Prueba Frida para4</CLLIEdificio>"
 				+ "<UbicacionEquipo>Prueba Frida para5</UbicacionEquipo>"
 				+ "<CLLI>Prueba Frida para6</CLLI>"
@@ -80,6 +83,11 @@ public class WdmRestController {
 				+ "<FechaCambio>Prueba Frida para31</FechaCambio>"
 				+ "<Proveedor>Prueba Frida para32</Proveedor>"
 				+ "</PeEquipo>";
+		Snippet julio=new Snippet();
+		julio.pruebaStore();
+
+	
+
 		singletonQueue j=new singletonQueue();
 		j.mandarMensaje(cadena);
 		

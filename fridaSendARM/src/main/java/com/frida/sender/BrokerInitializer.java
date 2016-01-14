@@ -6,16 +6,16 @@ import javax.servlet.Filter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
-public class WdmInitializer extends 
+public class BrokerInitializer extends 
 AbstractAnnotationConfigDispatcherServletInitializer{
 	@Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { WdmConfiguration.class };
+        return new Class[] { BrokerConfiguration.class };
     }
   
     @Override
     protected Class<?>[] getServletConfigClasses() {
-    	 return new Class<?>[] {WdmConfiguration.class};
+    	 return new Class<?>[] {BrokerConfiguration.class};
     }
   
     @Override
