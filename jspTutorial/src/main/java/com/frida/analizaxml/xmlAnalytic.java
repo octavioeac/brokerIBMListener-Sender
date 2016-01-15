@@ -4,6 +4,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.frida.negocio.PsConsultaPuertoNegocioImple;
+import com.frida.negocio.PsEquipoNegocioImple;
+import com.frida.negocio.PsPuertoNegocioImple;
+import com.frida.negocio.PsTarjetaNegocioImple;
+import com.frida.negocio.objectFactory;
+
 public class xmlAnalytic {
 
 	private String documentoxml;
@@ -15,22 +21,28 @@ public xmlAnalytic(String documento){
 
 public void detonaProceso(){
 	String analiza=extraeNombreXMl();
-	
+	 
 	if(analiza=="PsPuerto"){
-	       System.out.println( "HOLA: "+analiza+" 1" );
+		objectFactory objeto=new objectFactory(new PsPuertoNegocioImple(getDocumentoXml()));
+		    
 	}
 	if(analiza=="PsConsultaPuerto"){
-    	  System.out.println( "HOLA: "+analiza+" 2"  );
+		
+		objectFactory objeto=new objectFactory(new PsConsultaPuertoNegocioImple(getDocumentoXml()));
+    
 	}
 	if(analiza=="PsTarjeta"){
-   	  System.out.println( "HOLA: "+analiza+" 3"  );
+		objectFactory objeto=new objectFactory(new PsTarjetaNegocioImple(getDocumentoXml()));
+		
 	}
 	if(analiza=="PsEquipo"){
-   	  System.out.println( "HOLA: "+analiza+" 4"  );
+		
+		objectFactory objeto=new objectFactory(new PsEquipoNegocioImple(getDocumentoXml()));
+   	
 	}
    
 	if(analiza=="prueba"){
-      	  System.out.println( "HOLA: "+analiza+" 4"  );
+      	  System.out.println( "HOLA: "+analiza+" 5"  );
 	}
           
      	
@@ -45,6 +57,14 @@ public String extraeNombreXMl(){
 	Element cadena=doc.getDocumentElement();
 	String nombreTag=cadena.getTagName();
 	return nombreTag;
+	
+}
+
+
+public Document getDocumentoXml(){
+	XmlConvertido xmlana=new XmlConvertido();
+	Document doc=xmlana.convierteSCadenaDocumentoXML(documentoxml);
+	return doc;
 	
 }
 
