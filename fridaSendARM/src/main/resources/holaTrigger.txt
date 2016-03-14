@@ -1,0 +1,56 @@
+DELIMITER $$
+CREATE TRIGGER borra_puertos_tarjetas BEFORE DELETE
+ON inventario_puertos_ce 
+FOR EACH ROW
+ BEGIN
+DECLARE puertoARMBorrar VARCHAR(100);
+DECLARE tarjetaARMBorrar VARCHAR(100); 
+DECLARE estatusARMtrig  VARCHAR(100);
+DECLARE contador INT;
+DECLARE contador INT;
+set puertoARMBorrar=(select CONCAT( id_nodo,'/',repisat,'/',posicion_tarjeta,'/', 
+(case when subslot iS NULL or subslot='' then 'ND'  else subslot end),'/',puerto)
+ from inventario_puertos_ce where 
+puerto=OLD.puerto and 
+ subslot=OLD.subslot and 
+ posicion_tarjeta=OLD.posicion_tarjeta
+and repisat=OLD.repisat
+and id_nodo=OLD.id_nodo);
+
+set tarjetaARMBorrar=(select CONCAT( id_nodo,'/',repisat,'/',posicion_tarjeta,'/', 
+(case when subslot iS NULL or subslot='' then 'ND' else subslot end))
+ from inventario_puertos_ce where 
+puerto=OLD.puerto and 
+ subslot=OLD.subslot and 
+ posicion_tarjeta=OLD.posicion_tarjeta
+and repisat=OLD.repisat
+and id_nodo=OLD.id_nodo );    
+
+    set contador=(select COUNT(*) from inventario_puertos_ce where 
+														  posicion_tarjeta=OLD.posicion_tarjeta
+                                                          and repisat=OLD.repisat
+                                                           and subslot=OLD.subslot 
+                                                           and id_nodo=OLD.id_nodo);
+			
+                          IF(contador<2) THEN
+                             IF(contador<1) THEN
+						UPDATE adm_frida_arm set 
+					  correlation_id=CONCAT('ADIOS MUNDO','',contador) where id_elemento_arm=tarjetaARMBorrar;
+                                    ELSE
+ DELETE from  adm_frida_arm where id_elemento_arm=tarjetaARMBorrar and nom_element='TARJETA';
+							  DELETE from  adm_frida_arm where id_elemento_arm=puertoARMBorrar and nom_element='PUERTO';
+                             END iF;  
+                              ELSE     
+                       DELETE from  adm_frida_arm where id_elemento_arm=puertoARMBorrar and nom_element='PUERTO';
+                               END iF;  
+                           
+			              
+                              
+                          
+                              -- 'CREO QUE AQUI  COUNT PARA BORRAR LA TARJETA ';        
+	 END$$
+DELIMITER ;	
+
+
+DROP TRIGGER borra_puertos_tarjetas;
+

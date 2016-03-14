@@ -19,6 +19,7 @@ import com.frida.controller.pojo.MensajeEquipo;
 import com.frida.singleton.sender.singletonQueue;
 
 import www.frida.modelo.Snippet;
+import www.frida.modelo.Dao.admfridaarmOTFrida;
 import www.frida.modelo.Dao.catAnilloBusqueda;
 
 
@@ -38,6 +39,9 @@ public class BrokerRestController {
 		
 	}
 
+	
+	
+	
 	@RequestMapping(value="/json/{lastName}",method = RequestMethod.GET)
 	  public String get(@PathParam("lastName") String lastName) {
 	    return lastName+"HOLA MUNDO";
@@ -52,10 +56,11 @@ public class BrokerRestController {
 	public MensajeEquipo sendEquipo(@RequestBody Equipo gral)throws Exception{
 		MensajeEquipo k=new MensajeEquipo()	;
 		
-		catAnilloBusqueda cadena=new catAnilloBusqueda();
-		singletonQueue j=new singletonQueue();
-		j.mandarMensaje(cadena.getPeEquipo(gral.getIdEquipo()));
-		
+		admfridaarmOTFrida t=new admfridaarmOTFrida();
+		t.getServicioArm(gral.getOtId(),"GESTIONADO","PENDIENTE",gral.getTipoElemnto());
+		                                                           /*"NODO"*/
+		t.getServicioArm(gral.getOtId(),"CANCELADO","ENVIADO",gral.getTipoElemnto());
+	
 		k.setMensaje("OK");
 		
 		return k;
@@ -64,6 +69,9 @@ public class BrokerRestController {
 		
 	}
 	
-		
+
+
+	
+	
 	}
 

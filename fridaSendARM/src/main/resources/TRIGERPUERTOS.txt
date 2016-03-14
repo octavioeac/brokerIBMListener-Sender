@@ -1,0 +1,145 @@
+DELIMITER $$
+CREATE TRIGGER actualiza_puertos AFTER UPDATE
+ON inventario_puertos_ce 
+FOR EACH ROW
+ BEGIN
+DECLARE puertoARM VARCHAR(100);
+DECLARE tarjetaARM VARCHAR(100); 
+DECLARE bandera VARCHAR(100); 
+DECLARE armEnvioPuerto VARCHAR(100);
+DECLARE armEnvioTarjeta VARCHAR(100);
+DECLARE armExistPuerto VARCHAR(100);
+DECLARE armExistCancelacionPuerto VARCHAR(100);
+DECLARE estatusARMtrig  VARCHAR(100);
+DECLARE contador INT;
+DECLARE estatusCNS  VARCHAR(100);
+   -- 'DETECTA EL MOVIMEINTO DE GESTIONADO';     
+IF(NEW.gestionada='GESTIONADO') THEN
+
+set puertoARM=(select CONCAT( id_nodo,'/',repisat,'/',posicion_tarjeta,'/', 
+(case when subslot iS NULL or subslot='' then 'ND'  else subslot end),'/',puerto)
+ from inventario_puertos_ce where 
+puerto=OLD.puerto and 
+ subslot=OLD.subslot and 
+ posicion_tarjeta=OLD.posicion_tarjeta
+and repisat=OLD.repisat
+and id_nodo=OLD.id_nodo
+ and gestionada='GESTIONADO');
+
+set tarjetaARM=(select CONCAT( id_nodo,'/',repisat,'/',posicion_tarjeta,'/', 
+(case when subslot iS NULL or subslot='' then 'ND' else subslot end))
+ from inventario_puertos_ce where 
+puerto=OLD.puerto and 
+ subslot=OLD.subslot and 
+ posicion_tarjeta=OLD.posicion_tarjeta
+and repisat=OLD.repisat
+and id_nodo=OLD.id_nodo
+ and gestionada='GESTIONADO');
+
+set armExistPuerto=(select nom_element from adm_frida_arm where id_elemento_arm=puertoARM);
+      
+     
+           IF(armExistPuerto IS NULL or armExistPuerto='')THEN 
+    
+
+
+     		INSERT INTO adm_frida_arm SET
+			id_ot_trabajo=NEW.cluster,
+			nom_element='PUERTO',  
+			id_elemento_arm=puertoARM,
+			estatu_arm='PENDIENTE',
+			estatus_cns='GESTIONADO',
+			id_elemento_padre=tarjetaARM;
+		
+
+      		set bandera=(select nom_element from adm_frida_arm where id_elemento_arm=tarjetaARM);
+									  IF(bandera IS NULL or bandera='') THEN
+
+												INSERT INTO adm_frida_arm SET
+												id_ot_trabajo=NEW.cluster,
+												nom_element='TARJETA',  
+												id_elemento_arm=tarjetaARM,
+												estatu_arm='PENDIENTE',
+												estatus_cns='GESTIONADO',
+												id_elemento_padre=NEW.id_nodo;
+							          ELSE
+											UPDATE adm_frida_arm set estatus_cns='GESTIONADO'
+										  where id_elemento_arm=tarjetaARM;
+										END IF;            
+
+           ELSE
+             set armExistCancelacionPuerto=(SELECT estatus_cns from adm_frida_arm where id_elemento_arm=puertoARM);                        
+                           IF(armExistCancelacionPuerto='CANCELADO')THEN
+                                            
+                              UPDATE adm_frida_arm set estatus_cns='GESTIONADO'
+                              where id_elemento_arm=puertoARM;
+                               
+                              
+                                         
+                           END IF;			   
+
+
+		    END IF;			  
+ELSE
+
+set puertoARM=(select CONCAT( id_nodo,'/',repisat,'/',posicion_tarjeta,'/', 
+(case when subslot iS NULL or subslot='' then 'ND'  else subslot end),'/',puerto)
+ from inventario_puertos_ce where 
+puerto=OLD.puerto and 
+ subslot=OLD.subslot and 
+ posicion_tarjeta=OLD.posicion_tarjeta
+and repisat=OLD.repisat
+and id_nodo=OLD.id_nodo );
+
+	set armExistPuerto=(select nom_element from adm_frida_arm where id_elemento_arm=puertoARM);
+				
+				IF(armExistPuerto IS NOT NULL)THEN 
+			   set estatusARMtrig=(select estatu_arm from adm_frida_arm  where id_elemento_arm=puertoARM);
+                     IF(estatusARMTRIG='PENDIENTE')  THEN 
+                       DELETE from adm_frida_arm where id_elemento_arm=puertoARM and estatu_arm='PENDIENTE';
+      				ELSE
+                            UPDATE adm_frida_arm set estatus_cns='CANCELADO'
+                              where id_elemento_arm=puertoARM;
+                         END IF;
+				END IF;
+ -- 'NUEVO CODIGO ';
+set tarjetaARM=(select CONCAT( id_nodo,'/',repisat,'/',posicion_tarjeta,'/', 
+(case when subslot iS NULL or subslot='' then 'ND' else subslot end))
+ from inventario_puertos_ce where 
+puerto=OLD.puerto and 
+ subslot=OLD.subslot and 
+ posicion_tarjeta=OLD.posicion_tarjeta
+and repisat=OLD.repisat
+and id_nodo=OLD.id_nodo
+);
+
+set puertoARM=(select CONCAT( id_nodo,'/',repisat,'/',posicion_tarjeta,'/', 
+(case when subslot iS NULL or subslot='' then 'ND'  else subslot end),'/',puerto)
+ from inventario_puertos_ce where 
+puerto=OLD.puerto and 
+ subslot=OLD.subslot and 
+ posicion_tarjeta=OLD.posicion_tarjeta
+and repisat=OLD.repisat
+and id_nodo=OLD.id_nodo
+ );
+
+		set contador=(SELECT COUNT(*) from adm_frida_arm where id_elemento_padre=tarjetaARM);
+                 IF(contador=0) THEN
+                DELETE FROM adm_frida_arm where id_elemento_arm=tarjetaARM;
+				END IF;
+         IF(contador=1) THEN
+set estatusCNS=(select estatus_cns from adm_frida_arm where id_elemento_arm=puertoARM);
+                 IF(estatusCNS='CANCELADO')THEN
+                UPDATE adm_frida_arm set estatus_cns='CANCELADO' where id_elemento_arm=tarjetaARM;
+                 ELSE
+                UPDATE adm_frida_arm set correlation_id=CONCAT('CONDICION 2','',contador) where id_elemento_arm=tarjetaARM;
+                 END IF;
+ 
+                  END IF;
+   END IF;			   
+ END$$
+DELIMITER ;
+
+
+
+DROP TRIGGER actualiza_puertos;

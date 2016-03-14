@@ -11,12 +11,16 @@ public class parametrosQueue {
 	private String password;
 	
 	public parametrosQueue(){ 
-	  this.hostName="10.94.233.162";
-	  this.port=2414;
+	    this.hostName="10.94.183.209";
+	  //this.hostName="10.94.233.162";
+	  this.port=1415;
+	  //this.port=2414;
 	  this.channel="SYSTEM.BKR.CONFIG";
-	  this.queueManager="MB8QMGR";
-      this.destination="QL.RCFRIDA";
-	  //this.destination="QL.FRIDA.OUT";
+	  //this.queueManager="MB8QMGR";
+	  this.queueManager="QMD01";
+     // this.destination="QL.EVFRIDA"; /*ORIGINAL */
+      this.destination="QL.RCFRIDA";   /*PRUEBA LISTENER*/
+       
 	  this.transportType="CLIENT";
 	  this.username="mqm";
 	  this.password="mqm";

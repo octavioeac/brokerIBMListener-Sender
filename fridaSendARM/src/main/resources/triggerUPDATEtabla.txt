@@ -1,0 +1,34 @@
+TRIGGER EN  TABLA CAT_ANILLO
+
+
+DELIMITER $$
+CREATE TRIGGER admfridaarm_update AFTER UPDATE
+ ON cat_anillo
+ FOR EACH ROW
+ BEGIN
+DECLARE nodoEXIST VARCHAR(45);
+DECLARE bandera VARCHAR(45);
+    IF(NEW.estatus_cns='GESTIONADO') then
+      set nodoEXIST =(select estatu_arm from adm_frida_arm where id_elemento_arm=OLD.id_nodo);   
+			IF(nodoEXIST IS NULL or nodoEXIST='') THEN
+			insert into adm_frida_arm 
+			 set
+				id_ot_trabajo=NEW.anillo,
+				nom_element='NODO',  
+				id_elemento_arm=NEW.id_nodo,
+				estatu_arm='PENDIENTE',
+				estatus_cns=NEW.estatus_cns;
+             ELSE
+         UPDATE adm_frida_arm set estatus_cns='GESTIONADO' where id_elemento_arm=OLD.id_nodo;
+			 END IF;
+   ELSE 
+ set bandera =(select estatu_arm from adm_frida_arm where id_elemento_arm=OLD.id_nodo);   
+   IF(bandera='ENVIADO') THEN
+	    	 UPDATE adm_frida_arm set estatus_cns='CANCELADO' where id_elemento_arm=OLD.id_nodo;
+		ELSE
+    		delete from adm_frida_arm where id_ot_trabajo=OLD.anillo and id_elemento_arm=OLD.id_nodo;
+  
+   END IF;
+END IF;
+ END$$
+DELIMITER ;

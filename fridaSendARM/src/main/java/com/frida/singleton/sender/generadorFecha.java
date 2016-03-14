@@ -26,7 +26,7 @@ public class generadorFecha {
 	} 
 
 
-      public static String getCadenaAlfanumAleatoria (int longitud){
+      public  String getCadenaAlfanumAleatoria (int longitud){
 String cadenaAleatoria = "";
 long milis = new java.util.GregorianCalendar().getTimeInMillis();
 Random r = new Random(milis);
@@ -40,5 +40,15 @@ i ++;
 }
 return cadenaAleatoria;
 }
+   
+      public static void main(String args[]){
+    	
+    	generadorFecha on=new generadorFecha();
+    String ca=	on.getCadenaAlfanumAleatoria(20);
+    System.out.println(ca+on.gener());
+    	
+    }  
+      
+      
 
 }
