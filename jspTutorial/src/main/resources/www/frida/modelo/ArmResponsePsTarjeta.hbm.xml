@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2016 05:41:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="www.frida.modelo.ArmResponsePsTarjeta" table="arm_response_ps_tarjeta">
+        <id name="Id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="idTarjetaFrida" type="java.lang.String">
+            <column name="id_tarjeta_frida" />
+        </property>
+        <property name="idTarjetaArm" type="java.lang.String">
+            <column name="id_tarjeta_arm" />
+        </property>
+        <property name="nombreTarjeta" type="java.lang.String">
+            <column name="nombre_tarjeta" />
+        </property>
+        <property name="meesageId" type="java.lang.String">
+            <column name="meesage_id" />
+        </property>
+        <property name="xmlMessage" type="java.lang.String">
+            <column name="xml_message" />
+        </property>
+        <property name="fechaMensaje" type="java.util.Date">
+            <column name="fecha_mensaje" />
+        </property>
+    </class>
+</hibernate-mapping>

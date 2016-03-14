@@ -1,0 +1,27 @@
+CREATE TABLE `infinitum_unica`.`pe_tarjeta_arm` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `movimiento` VARCHAR(45) NULL,
+  `id_nodo` VARCHAR(45) NULL,
+  `id_tarjeta_frida` VARCHAR(45) NULL,
+  `repisa` VARCHAR(45) NULL,
+  `slot` VARCHAR(45) NULL,
+  `sub_slot` VARCHAR(45) NULL,
+  `modelo_tarjeta` VARCHAR(45) NULL,
+  `estado_aprovisionamiento` VARCHAR(45) NULL,
+  `fecha_planeacion` DATE NULL,
+  `numero_serie` VARCHAR(45) NULL,
+  `id_tarjeta_padre` VARCHAR(45) NULL,
+  `codigo_clei` VARCHAR(45) NULL,
+  `folio_orden_trabajo_externa` VARCHAR(45) NULL,
+  `id_elemento_pep` VARCHAR(45) NULL,
+  `proyecto_id_documento` VARCHAR(45) NULL,
+  `fecha_instalacion` DATE NULL,
+  `fecha_gestion` DATE NULL,
+  `proveedor` VARCHAR(45) NULL,
+  `fecha_baja` DATE NULL,
+  `mensajexml` LONGTEXT NULL,
+  `fecha_envio_arm` DATE NULL,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+  
+  
+  

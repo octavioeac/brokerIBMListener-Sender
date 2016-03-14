@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1/03/2016 06:44:06 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="www.frida.modelo.ArmResponsePsEquipo" table="arm_response_ps_equipo">
+        <id name="Id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreEquipo" type="java.lang.String">
+            <column name="nombre_equipo" />
+        </property>
+        <property name="identificadorArm" type="java.lang.String">
+            <column name="identificador_arm" />
+        </property>
+        <property name="idNodo" type="java.lang.String">
+            <column name="id_nodo" />
+        </property>
+        <property name="messageId" type="java.lang.String">
+            <column name="message_id" />
+        </property>
+        <property name="xmlMessage" type="java.lang.String">
+            <column name="xml_message" />
+        </property>
+        <property name="fechaMensajeArm" type="java.sql.Date">
+            <column name="fecha_mensaje_arm" />
+        </property>
+    </class>
+</hibernate-mapping>

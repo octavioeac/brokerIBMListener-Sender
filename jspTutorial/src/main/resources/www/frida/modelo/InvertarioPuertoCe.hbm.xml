@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2016 07:10:02 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="www.frida.modelo.InvertarioPuertoCe" table="inventario_puertos_ce">
+        <id name="Id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="idNodo" type="java.lang.String">
+            <column name="id_nodo" />
+        </property>
+        <property name="repisat" type="java.lang.String">
+            <column name="repisat" />
+        </property>
+        <property name="posicionTarjeta" type="java.lang.String">
+            <column name="posicion_tarjeta" />
+        </property>
+        <property name="subslot" type="java.lang.String">
+            <column name="subslot" />
+        </property>
+        <property name="tipoPuerto" type="java.lang.String">
+            <column name="tipo_puerto" />
+        </property>
+        <property name="capacidadPuerto" type="java.lang.String">
+            <column name="capacidad_puerto" />
+        </property>
+        <property name="gestionada" type="java.lang.String">
+            <column name="gestionada" />
+        </property>
+        <property name="nombreOficialPisa" type="java.lang.String">
+            <column name="nombre_oficial_pisa" />
+        </property>
+        <property name="observaciones" type="java.lang.String">
+            <column name="observaciones" />
+        </property>
+        <property name="ptoTroncal" type="java.lang.String">
+            <column name="pto_troncal" />
+        </property>
+        <property name="tabla" type="java.lang.String">
+            <column name="tabla" />
+        </property>
+        <property name="estatus" type="java.lang.String">
+            <column name="estatus" />
+        </property>
+        <property name="tipoConector" type="java.lang.String">
+            <column name="tipo_conector" />
+        </property>
+        <property name="longJumper" type="java.lang.String">
+            <column name="long_jumper" />
+        </property>
+        <property name="tipoJumper" type="java.lang.String">
+            <column name="tipo_jumper" />
+        </property>
+        <property name="ubicacionBdfo" type="java.lang.String">
+            <column name="ubicacion_bdfo" />
+        </property>
+        <property name="contactoBdfo" type="java.lang.String">
+            <column name="contacto_bdfo" />
+        </property>
+        <property name="tipoBdfoAmdocs" type="java.lang.String">
+            <column name="tipo_bdfo_amdocs" />
+        </property>
+        <property name="tipoDfoAmdocs" type="java.lang.String">
+            <column name="tipo_dfo_amdocs" />
+        </property>
+        <property name="fechaAlta" type="java.util.Date">
+            <column name="fecha_alta" />
+         </property>
+         <property name="puerto" type="java.lang.String">
+            <column name="puerto" />
+        </property>
+    </class>
+</hibernate-mapping>
