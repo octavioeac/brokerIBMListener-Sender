@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 4/03/2016 11:11:34 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="www.frida.modelo.InventarioTarjetasCe" table="inventario_tarjetas_ce">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="idNodo" type="java.lang.String">
+            <column name="id_nodo" />
+        </property>
+        <property name="repisat" type="java.lang.String">
+            <column name="repisat" />
+        </property>
+        <property name="posicionTarjeta" type="java.lang.String">
+            <column name="posicion_tarjeta" />
+        </property>
+        <property name="subslot" type="java.lang.String">
+            <column name="subslot" />
+        </property>
+        <property name="modeloTarjeta" type="java.lang.String">
+            <column name="modelo_tarjeta" />
+        </property>
+        <property name="estatus" type="java.lang.String">
+            <column name="estatus" />
+        </property>
+         
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+CREATE TABLE `infinitum_unica`.`arm_response_ps_tarjeta` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_tarjeta_frida` VARCHAR(45) NULL,
+  `id_tarjeta_arm` VARCHAR(45) NULL,
+  `nombre_tarjeta` VARCHAR(45) NULL,
+  `meesage_id` VARCHAR(45) NULL,
+  `xml_message` LONGTEXT NULL,
+  `fecha_mensaje` DATE NULL,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+  

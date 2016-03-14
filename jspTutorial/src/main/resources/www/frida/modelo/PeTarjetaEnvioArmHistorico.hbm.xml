@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/03/2016 01:52:17 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="www.frida.modelo.PeTarjetaEnvioArmHistorico" table="pe_tarjeta_arm">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="movimiento" type="java.lang.String">
+            <column name="movimiento" />
+        </property>
+        <property name="idNodo" type="java.lang.String">
+            <column name="id_nodo" />
+        </property>
+        <property name="idTarjetaFrida" type="java.lang.String">
+            <column name="id_tarjeta_frida" />
+        </property>
+        <property name="repisa" type="java.lang.String">
+            <column name="repisa" />
+        </property>
+        <property name="slot" type="java.lang.String">
+            <column name="slot" />
+        </property>
+        <property name="subSlot" type="java.lang.String">
+            <column name="sub_slot" />
+        </property>
+        <property name="modeloTarjeta" type="java.lang.String">
+            <column name="modelo_tarjeta" />
+        </property>
+        <property name="estadoAprovisionamiento" type="java.lang.String">
+            <column name="estado_aprovisionamiento" />
+        </property>
+        <property name="fechaPlaneacion" type="java.util.Date">
+            <column name="fecha_planeacion" />
+        </property>
+        <property name="numeroSerie" type="java.lang.String">
+            <column name="numero_serie" />
+        </property>
+        <property name="idTarjetaPadre" type="java.lang.String">
+            <column name="id_tarjeta_padre" />
+        </property>
+        <property name="codigoClei" type="java.lang.String">
+            <column name="codigo_clei" />
+        </property>
+        <property name="folioOrdenTrabajoExterna" type="java.lang.String">
+            <column name="folio_orden_trabajo_externa" />
+        </property>
+        <property name="idElementoPep" type="java.lang.String">
+            <column name="id_elemento_pep" />
+        </property>
+        <property name="proyectoIdDocumento" type="java.lang.String">
+            <column name="proyecto_id_documento" />
+        </property>
+        <property name="fechaInstalacion" type="java.util.Date">
+            <column name="fecha_instalacion" />
+        </property>
+        <property name="fechaGestion" type="java.util.Date">
+            <column name="fecha_gestion" />
+        </property>
+        <property name="proveedor" type="java.lang.String">
+            <column name="proveedor" />
+        </property>
+        <property name="fechaBaja" type="java.util.Date">
+            <column name="fecha_baja" />
+        </property>
+        <property name="mensajexml" type="java.lang.String">
+            <column name="MENSAJEXML" />
+        </property>
+        <property name="messageID" type="java.lang.String">
+            <column name="MESSAGEID" />
+        </property>
+          <property name="fechaEnvioArm" type="java.util.Date">
+            <column name="fecha_envio_arm" />
+        </property>
+      
+        
+    </class>
+</hibernate-mapping>
