@@ -5,7 +5,15 @@ public class PsEquipo {
 	private String NombreEquipo;
 	private String IdentificadorARM;
 	private String ID_Nodo;
+	private String messageId;
 	
+	
+	public String getMessageId() {
+		return messageId;
+	}
+	public void setMessageId(String messageId) {
+		this.messageId = messageId;
+	}
 	public String getNombreEquipo() {
 		return NombreEquipo;
 	}

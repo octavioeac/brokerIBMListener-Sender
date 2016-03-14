@@ -28,6 +28,8 @@ public class SpringMdp extends DefaultMessageListenerContainer implements Messag
 			   TextMessage msg = null;
 				 msg=(TextMessage)message;
 				 String text = msg.getText();
+				 System.out.println("HOLA MUNDO");
+				 logger.info("HOLA LOGGER");
 					System.out.println(text);
 	          	 logger.info(message.toString());
 				xmlAnalytic k=new xmlAnalytic(text);

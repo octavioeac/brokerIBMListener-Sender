@@ -1,25 +1,24 @@
 package com.frida.analizaxml;
 
+import javax.jms.Message;
+
+import org.apache.axis.transport.jms.Handler;
+
+import com.frida.analizacadenas.AnalizaPuertos;
+import com.frida.analizacadenas.analizacadenasRespuestas;
 import com.frida.singleton.sender.singletonQueue;
 
 public class pruebaXML {
 
 	public static void main(String[] args) {
-	pruebaXML caden=new pruebaXML();
-	/*	xmlAnalytic k=new xmlAnalytic(caden.getConsultaPuertos());
-		k.detonaProceso();
-		*/
-		singletonQueue objeto=new singletonQueue();
+		pruebaXML caden=new pruebaXML();
+		String envio=caden.getConsultaPuertos();		
 		
+		xmlAnalytic k=new xmlAnalytic(caden.tarjeta());
+k.detonaProceso();
+		 
+		//AnalizaPuertos l=new AnalizaPuertos("GSVEXSGU009-DIST2-7450/01/01/01/01");
 		
-		
-		
-	String envio=caden.Puerto();
-	//	String envio=caden.getConsultaPuertos();
-		//String envio=caden.tarjeta();
-		//String envio=caden.Equipo();
-		//String envio="";
-		objeto.mandarMensaje(envio);
 		
 	}
 
@@ -51,9 +50,10 @@ public class pruebaXML {
 	
 	public String Equipo(){
 		String cadena="<PsEquipo>"
-				+ "<NombreEquipo></NombreEquipo>"
-				+ "<IdentificadorARM></IdentificadorARM>"
-				+ "<ID_Nodo></ID_Nodo>"
+				+ "<NombreEquipo>ARM-NOMBRE</NombreEquipo>"
+				+ "<IdentificadorARM>GSVEXSGU009-DIST2-7450-ARM-GENERACION</IdentificadorARM>"
+				+ "<ID_Nodo>GSVEXSGU009-DIST2-7450</ID_Nodo>"
+				+ "<messageID>00001</messageID>"
 				+ "</PsEquipo>";
 		return cadena;
 	}
@@ -61,7 +61,7 @@ public class pruebaXML {
 	
 	public String Puerto(){
 		String cadena="<PsPuerto>"
-				+ "<NombrePuerto>Puerto 1</NombrePuerto>"
+				+ "<NombrePuerto>HOLA PUERTO PARAMETRO 1</NombrePuerto>"
 				+ "<IDPuerto>ESTE ES ID  PUERTO</IDPuerto>"
 				+ "<IDPuertoFRIDA>ID PUERTO FRIDA PRUEBA</IDPuertoFRIDA>"
 				+ "</PsPuerto>";
@@ -72,13 +72,20 @@ public class pruebaXML {
 	
 	public String tarjeta(){
 String cadena="<PsTarjeta>"
-		+ "<IDTarjetaFrida></IDTarjetaFrida>"
-		+ "<IDTarjetaARM></IDTarjetaARM>"
-		+ "<NombreTarjeta></NombreTarjeta>"
+		+ "<IDTarjetaFrida>GSVEXSGU009-DIST2-7450/01/01/01</IDTarjetaFrida>"
+		+ "<IDTarjetaARM>2</IDTarjetaARM>"
+		+ "<NombreTarjeta>3</NombreTarjeta>"
+		+ "<messageID>TP0UHOIM43CPQ602H8QM2016211133749</messageID>"
 		+ "</PsTarjeta>";
 return cadena;
 
 	}
+	
+	public String hola(){
+		String cadena="<prueba>HOLA MUNDO</prueba>";
+		return cadena;
+
+			}
 	
 	
 }

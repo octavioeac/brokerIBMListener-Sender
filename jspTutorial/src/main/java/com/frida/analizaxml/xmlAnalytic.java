@@ -19,10 +19,13 @@ public xmlAnalytic(String documento){
 	this.documentoxml=documento;		
 	}
 
+
+
+
 public void detonaProceso(){
 	String analiza=extraeNombreXMl();
 	 
-	if(analiza=="PsPuerto"){
+	/*if(analiza=="PsPuerto"){
 		objectFactory objeto=new objectFactory(new PsPuertoNegocioImple(getDocumentoXml()));
 		    
 	}
@@ -30,20 +33,22 @@ public void detonaProceso(){
 		
 		objectFactory objeto=new objectFactory(new PsConsultaPuertoNegocioImple(getDocumentoXml()));
     
-	}
+	}*/
 	if(analiza=="PsTarjeta"){
-		objectFactory objeto=new objectFactory(new PsTarjetaNegocioImple(getDocumentoXml()));
+		System.out.println("hola MUNDO");
+		
+		objectFactory objeto=new objectFactory(new PsTarjetaNegocioImple(getDocumentoXml(),documentoxml));
 		
 	}
 	if(analiza=="PsEquipo"){
 		
-		objectFactory objeto=new objectFactory(new PsEquipoNegocioImple(getDocumentoXml()));
+		objectFactory objeto=new objectFactory(new PsEquipoNegocioImple(getDocumentoXml(),documentoxml));
    	
 	}
    
-	if(analiza=="prueba"){
+	/*if(analiza=="prueba"){
       	  System.out.println( "HOLA: "+analiza+" 5"  );
-	}
+	}*/
           
      	
 	 

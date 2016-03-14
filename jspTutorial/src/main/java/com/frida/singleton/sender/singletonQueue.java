@@ -35,7 +35,7 @@ public static synchronized singletonQueue instancia(){
 }
 
  @SuppressWarnings("deprecation")
-public synchronized String mandarMensaje(String cadenaxml){
+public synchronized String mandarMensaje(String cadenaxml,String cadenaAleato){
 
 		QueueConnection  con =null;
 		QueueSession session =null;
@@ -71,7 +71,7 @@ public synchronized String mandarMensaje(String cadenaxml){
 			System.err.println("1 :");
 			message.setText(cadenaxml);
 		   sender = session.createSender(queue);
-		     message.setJMSCorrelationID(ran.gener());
+		     message.setJMSCorrelationID(cadenaAleato);
 			String correla=message.getJMSCorrelationID();
 			System.out.println(correla);
 		   

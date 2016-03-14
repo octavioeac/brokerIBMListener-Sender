@@ -23,8 +23,8 @@ public class EnvioAntes {
 		System.out.println("Envio de información"+mensage);
 		singletonQueue objeto=new singletonQueue();
 		String cadenaxml="<prueba>"+mensage+"</prueba>";
-		objeto.mandarMensaje(cadenaxml);
-		
+		objeto.mandarMensaje(cadenaxml,"SDIUUSIDUISDU");
+		System.out.println("Se envio la  información"+mensage);
 	}
 	
 

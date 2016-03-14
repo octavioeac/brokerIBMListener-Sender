@@ -8,11 +8,11 @@ public class pruebaMensaje {
 
 	public static void main(String[] args) {
 		
-		String mensage="HOLA MDB "+new Date();
+		String mensage="HOLA MDB";
 		System.out.println("Envio de información"+mensage);
 		singletonQueue objeto=new singletonQueue();
 		String cadenaxml="<prueba>"+mensage+"</prueba>";
-		objeto.mandarMensaje(cadenaxml);
+		objeto.mandarMensaje(cadenaxml,"");
 
 	}
 

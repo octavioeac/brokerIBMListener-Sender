@@ -8,6 +8,14 @@ public class PsTarjeta {
 	
 	private String NombreTarjeta;
 	
+	private String meesageID;
+	
+	public String getMeesageID() {
+		return meesageID;
+	}
+	public void setMeesageID(String meesageID) {
+		this.meesageID = meesageID;
+	}
 	public String getIDTarjetaFrida() {
 		return IDTarjetaFrida;
 	}

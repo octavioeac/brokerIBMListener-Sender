@@ -7,6 +7,8 @@ import org.w3c.dom.NodeList;
 
 import com.frida.pojoXML.PsPuerto;
 
+import www.frida.modelo.Dao.ArmResponsePsTarjetaDAO;
+
 public class PsPuertoNegocioImple implements negocioFridaCarrier{
 
      private Document doc;
@@ -22,7 +24,14 @@ public class PsPuertoNegocioImple implements negocioFridaCarrier{
 	
 	public void getNegocioXML() {
 		PsPuerto puert=getPuertoXML();
-		System.out.println("{ NombrePuerto:"+puert.getNombrePuerto()+" ,IDPuerto: "+puert.getIDPuerto()+", IDPuertoFRIDA: "+puert.getIDPuertoFRIDA());
+		String cadena="{ NombrePuerto: "+puert.getNombrePuerto()+" ,\n "
+        				+ "IDPuerto: "+puert.getIDPuerto()+", \n "
+		        		+ "IDPuertoFRIDA: "+puert.getIDPuertoFRIDA()+" \n "
+								+ "}";
+		System.out.println(cadena);
+		
+		
+		
 	}
 	
 	

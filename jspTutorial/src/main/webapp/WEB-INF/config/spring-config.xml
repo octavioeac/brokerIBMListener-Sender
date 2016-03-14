@@ -39,9 +39,12 @@
 </bean>
 
 <bean id="mqQueueConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
-    <property name="hostName" value="10.94.233.162" />
+    <property name="hostName" value="10.94.183.209" />
+    <property name="port" value="1415" />
+    <property name="queueManager" value="QMD01" />
+  <!--   <property name="hostName" value="10.94.233.162" />
     <property name="port" value="2414" />
-    <property name="queueManager" value="MB8QMGR" />
+    <property name="queueManager" value="MB8QMGR" /> -->
     <property name="transportType" value="1" />
     <property name="channel" value="SYSTEM.BKR.CONFIG" />
     
