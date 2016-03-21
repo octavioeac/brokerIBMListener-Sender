@@ -1,0 +1,40 @@
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.commonservices.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.commonservices" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.connector.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.connector" -Dversion=7.1.0.3 -Dpackaging=jar 
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.headers.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.headers" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.jmqi.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.jmqi" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.jmqi.local.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.jmqi.local" -Dversion=7.1.0.3 -Dpackaging=jar 
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.jmqi.remote.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.jmqi.remote" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.jmqi.system.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.jmqi.system" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.jms.admin.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.jms.admin" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mq.pcf.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.pcf" -Dversion=7.1.0.3 -Dpackaging=jar
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.mqjms.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.mqjms" -Dversion=7.1.0.3 -Dpackaging=jar
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.commonservices.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.commonservices" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.jms.internal.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.jms.internal" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.jms.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.jms" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.matchspace.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.matchspace" -Dversion=7.1.0.3 -Dpackaging=jar 
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.provider.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.provider" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.ref.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.ref" -Dversion=7.1.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.wmq.common.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.wmq.common" -Dversion=7.1.0.3 -Dpackaging=jar
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.wmq.factories.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.wmq.factories" -Dversion=7.1.0.3 -Dpackaging=jar
+
+
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.wmq.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.wmq" -Dversion=7.1.0.3 -Dpackaging=jar
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.wmq.v6.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.wmq.v6" -Dversion=7.1.0.3 -Dpackaging=jar
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\dhbcore.jar" -DgroupId="com.ibm" -DartifactId="dhbcore" -Dversion=7.1.0.3 -Dpackaging=jar
+
+
+
+
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\wmq.jmsra\com.ibm.msg.client.commonservices.j2se.jar" -DgroupId="com.ibm" -DartifactId="com.ibm.msg.client.commonservices.j2se" -Dversion=7.1.0.3 -Dpackaging=jar
+
+mvn install:install-file -Dfile="C:\Users\PROIT\Desktop\JarsJMS\IBM\" -DgroupId="com.ibm" -DartifactId="com.ibm.mq.jms.admin" -Dversion=7.1.0.3 -Dpackaging=jar
+
+

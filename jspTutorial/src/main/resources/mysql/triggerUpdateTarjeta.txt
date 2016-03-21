@@ -1,0 +1,8 @@
+DELIMITER $$
+CREATE TRIGGER actualiza_tarjeta AFTER INSERT
+ON arm_response_ps_tarjeta 
+FOR EACH ROW
+ BEGIN
+update adm_frida_arm set estatu_arm='ALTA' where correlation_id=NEW.meesage_id;
+	 END$$
+DELIMITER ;	
