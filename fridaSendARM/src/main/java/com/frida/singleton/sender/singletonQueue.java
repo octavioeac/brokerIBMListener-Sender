@@ -35,6 +35,7 @@ public static synchronized singletonQueue instancia(){
 }
 
  @SuppressWarnings("deprecation")
+<<<<<<< HEAD
 public synchronized String mandarMensaje(String cadenaxml,String cadenaAleato){
 
 		QueueConnection  con =null;
@@ -72,6 +73,45 @@ public synchronized String mandarMensaje(String cadenaxml,String cadenaAleato){
 			message.setText(cadenaxml);
 		   sender = session.createSender(queue);
 		     message.setJMSCorrelationID(cadenaAleato);
+=======
+public synchronized String mandarMensaje(String cadenaxml){
+
+		QueueConnection  con =null;
+		QueueSession session =null;
+		Queue queue = null;
+		QueueSender sender =null;
+		QueueReceiver receiver =null;		
+		String correlID=""; 
+		Hashtable resp = new Hashtable(0);
+		idCorrelationMensaje idC=new idCorrelationMensaje();
+		generadorFecha ran=new generadorFecha();
+		try{
+			
+			qcf.setTransportType(JMSC.MQJMS_TP_CLIENT_MQ_TCPIP);
+	     	qcf.setChannel(objet_conec.getChannel());/* Channel*/ 	
+			qcf.setHostName(objet_conec.getHostName());
+			qcf.setPort(objet_conec.getPort());
+		   qcf.setQueueManager(objet_conec.getQueueManager());
+					
+	  con = (QueueConnection)qcf.createQueueConnection(objet_conec.getUsername(),objet_conec.getPassword());
+
+	  
+	  con.start();
+		    session = (QueueSession)con.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+		
+		    
+		    queue = session.createQueue(objet_conec.getDestination());//qg1//cola
+		    
+		    TextMessage message = session.createTextMessage();
+		    
+		    message.setJMSDeliveryMode(DeliveryMode.PERSISTENT);
+			message.setJMSExpiration(0);
+			        
+			System.err.println("1 :");
+			message.setText(cadenaxml);
+		   sender = session.createSender(queue);
+		     message.setJMSCorrelationID(ran.gener());
+>>>>>>> branch 'master' of https://github.com/octavioeac/brokerIBMListener-Sender.git
 			String correla=message.getJMSCorrelationID();
 			System.out.println(correla);
 		   

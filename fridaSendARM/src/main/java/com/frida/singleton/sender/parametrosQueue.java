@@ -11,6 +11,7 @@ public class parametrosQueue {
 	private String password;
 	
 	public parametrosQueue(){ 
+<<<<<<< HEAD
 	    this.hostName="10.94.183.209";
 	  //this.hostName="10.94.233.162";
 	  this.port=1415;
@@ -21,6 +22,14 @@ public class parametrosQueue {
      // this.destination="QL.EVFRIDA"; /*ORIGINAL */
       this.destination="QL.RCFRIDA";   /*PRUEBA LISTENER*/
        
+=======
+	  this.hostName="10.94.233.162";
+	  this.port=2414;
+	  this.channel="SYSTEM.BKR.CONFIG";
+	  this.queueManager="MB8QMGR";
+      this.destination="QL.EVFRIDA";
+	  //this.destination="QL.FRIDA.OUT";
+>>>>>>> branch 'master' of https://github.com/octavioeac/brokerIBMListener-Sender.git
 	  this.transportType="CLIENT";
 	  this.username="mqm";
 	  this.password="mqm";

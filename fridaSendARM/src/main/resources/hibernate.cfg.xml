@@ -6,6 +6,7 @@
  <session-factory >
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
   <property name="hibernate.connection.password">infinitum2008</property>
+<<<<<<< HEAD
   <!--  <property name="hibernate.connection.url">jdbc:mysql://10.94.143.194:3306/infinitum_unica</property> -->
    <property name="hibernate.connection.url">jdbc:mysql://10.105.59.73:3306/infinitum_unica</property> 
   <property name="hibernate.connection.username">infinitum</property>
@@ -21,5 +22,19 @@
         <mapping resource="www/frida/modelo/StoreProcedureSAIB.hbm.xml"/>
         <mapping resource="www/frida/modelo/CatAnilloMapping.hbm.xml"/>
  
+=======
+  <property name="hibernate.connection.url">jdbc:mysql://10.94.143.194:3306/infinitum_unica</property>
+  <property name="hibernate.connection.username">infinitum</property>
+  <property name="hibernate.default_schema">infinitum_unica</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="transaction.auto_close_session">true</property>
+  <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+  <!-- Enable Hibernate's automatic session context management -->
+  <property name="hibernate.current_session_context_class">thread</property>
+  <property name="show_sql">true</property>
+  <mapping resource="www/frida/modelo/SaibConsultaRequest.hbm.xml"/>
+    <mapping resource="www/frida/modelo/StoreProcedureSAIB.hbm.xml"/>
+        <mapping resource="www/frida/modelo/SaibConsultaResponse.hbm.xml"/>
+>>>>>>> branch 'master' of https://github.com/octavioeac/brokerIBMListener-Sender.git
  </session-factory>
 </hibernate-configuration>

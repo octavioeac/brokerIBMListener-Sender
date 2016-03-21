@@ -3,6 +3,10 @@
   <fixed facet="wst.jsdt.web"/>
   <installed facet="jst.web" version="2.3"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
+<<<<<<< HEAD
   <installed facet="java" version="1.7"/>
   <installed facet="jst.jaxrs" version="2.0"/>
+=======
+  <installed facet="java" version="1.5"/>
+>>>>>>> branch 'master' of https://github.com/octavioeac/brokerIBMListener-Sender.git
 </faceted-project>
